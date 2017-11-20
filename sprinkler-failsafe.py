@@ -11,12 +11,16 @@ installedZones = 2
 
 def checkAllZones():
 	#Check the status of all zones, if a zone is on, write a log file so that we can check it again later
+	for x in range(1, installedZones):
+		logging.info('Zone' + x + 'ok')
 
 def checkLogFile():
+	#something
+	print installedZones
 
-
-def turnOffZone(zone):
-	relay_off(zone)
+def turnOffZone():
+    #something
+	print installedZones
 
 checkAllZones()
 
