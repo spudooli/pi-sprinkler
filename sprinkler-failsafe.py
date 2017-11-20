@@ -10,8 +10,15 @@ logging.basicConfig(filename='/tmp/pi-sprinkler.log',level=logging.INFO)
 installedZones = 2
 
 def checkAllZones():
+	#Check the status of all zones, if a zone is on, write a log file so that we can check it again later
+
+def checkLogFile():
+
 
 def turnOffZone(zone):
 	relay_off(zone)
 
 checkAllZones()
+
+
+checkLogFile()
