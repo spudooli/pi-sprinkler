@@ -18,7 +18,7 @@ state = sys.argv[2]
 
 installedZones = int(5)
 
-def checkAnyZonesRunning()
+def checkAnyZonesRunning():
     for zonenumber in range(1, installedZones):
         if not relay_get_port_status(zonenumber):
             return True
@@ -26,8 +26,8 @@ def checkAnyZonesRunning()
 if state == "On":
     if checkAnyZonesRunning():
         relay_on(zone)
-        logging.info('Zone' + str(zonenumber) + ' on')
+        logging.info('Zone' + str(zone) + ' on')
 
 if state == "Off":
     relay_off(zone)
-    logging.info('Zone' + str(zonenumber) + ' off')
+    logging.info('Zone' + str(zone) + ' off')
