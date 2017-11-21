@@ -31,7 +31,7 @@ def checkAnyZonesRunning():
         return False    
  
 if state == "On":
-    if checkAnyZonesRunning():
+    if not checkAnyZonesRunning():
         relay_on(zone)
         logging.info('Zone' + str(zone) + ' on')
 
