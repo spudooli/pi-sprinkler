@@ -24,8 +24,9 @@ def checkLogFile():
     				print "found " + line
 					zonecount = zonecount + 1
 					print zonecount
-		if zonecount > 60:
-			turnOffZone(x)
+					if zonecount > 60:
+						turnOffZone(x)
+						zonecount = 0
 
 def turnOffZone(zone):
 	#something
