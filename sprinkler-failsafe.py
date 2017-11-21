@@ -25,7 +25,7 @@ def checkLogFile():
 					zonecount = zonecount + 1
 					print zonecount
 					if zonecount > 60:
-						turnOffZone(x)
+						turnOffZone(zonenumber)
 						zonecount = 0
 
 def turnOffZone(zone):
