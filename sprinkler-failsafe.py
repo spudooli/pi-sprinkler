@@ -12,7 +12,6 @@ installedZones = int(5)
 def checkAllZones():
     for zonenumber in range(1, installedZones):
         if relay_get_port_status(zonenumber):
-            print "yep"
             logging.info('Zone' + str(zonenumber) + ' on')
 
 def checkLogFile():
