@@ -16,7 +16,8 @@ state = sys.argv[2]
 
 if state == "On":
     relay_on(zone)
+    logging.info('Zone' + str(zonenumber) + ' on')
 
 if state == "Off":
     relay_off(zone)
-
+    logging.info('Zone' + str(zonenumber) + ' off')

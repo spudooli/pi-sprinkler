@@ -2,10 +2,10 @@
 # more than 60 minutes before shutting them off automatically
 #Is a fail safe to ensure that even if the Pi loses WIFI, the water won't run all night.
 
-from relay_lib_seeed import *
-
 import logging
-logging.basicConfig(filename='/tmp/pi-sprinkler.log',level=logging.INFO)
+logging.basicConfig(filename='/tmp/pi-sprinkler.log', level=logging.INFO)
+
+from relay_lib_seeed import *
 
 installedZones = int(5)
 
@@ -30,7 +30,7 @@ def checkLogFile():
 
 def turnOffZone(zone):
     #something
-    print "Turning off zone " + zone
+    print "Turning off zone " + int(zone)
 
 checkAllZones()
 
