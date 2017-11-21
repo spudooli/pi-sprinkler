@@ -19,10 +19,17 @@ state = sys.argv[2]
 installedZones = int(5)
 
 def checkAnyZonesRunning():
+    zonerunningcount = 0
     for zonenumber in range(1, installedZones):
-        if not relay_get_port_status(zonenumber):
-            return True
-  
+        if relay_get_port_status(zonenumber):
+            zonerunningcount = zonerunningcount + 1
+            print zonerunningcount
+    if zonerunningcount > 0:
+        zonerunningcount = 0
+        return True
+    else:
+        return False    
+ 
 if state == "On":
     if checkAnyZonesRunning():
         relay_on(zone)
