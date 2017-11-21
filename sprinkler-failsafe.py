@@ -7,20 +7,21 @@ from relay_lib_seeed import *
 import logging
 logging.basicConfig(filename='/tmp/pi-sprinkler.log',level=logging.INFO)
 
-installedZones = 2
+installedZones = int(5)
 
 def checkAllZones():
-	#Check the status of all zones, if a zone is on, write a log file so that we can check it again later
 	for x in range(1, installedZones):
-		logging.info('Zone' + x + 'ok')
+            if relay_get_port_status(x):
+                print "yep"
+		#logging.info('Zone' + str(x) + 'on')
 
 def checkLogFile():
-	#something
-	print installedZones
+    #something
+    print "check"
 
 def turnOffZone():
     #something
-	print installedZones
+    print installedZones
 
 checkAllZones()
 

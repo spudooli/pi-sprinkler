@@ -92,7 +92,7 @@ def relay_toggle_port(relay_num):
 def relay_get_port_status(relay_num):
     # determines whether the specified port is ON/OFF
     global DEVICE_REG_DATA
-    print('Checking status of relay', relay_num)
+    #print('Checking status of relay', relay_num)
     res = relay_get_port_data(relay_num)
     if res > 0:
         mask = 1 << (relay_num - 1)
@@ -108,7 +108,7 @@ def relay_get_port_status(relay_num):
 def relay_get_port_data(relay_num):
     # gets the current byte value stored in the relay board
     global DEVICE_REG_DATA
-    print('Reading relay status value for relay', relay_num)
+    #print('Reading relay status value for relay', relay_num)
     # do we have a valid port?
     if 0 < relay_num <= NUM_RELAY_PORTS:
         # read the memory location
