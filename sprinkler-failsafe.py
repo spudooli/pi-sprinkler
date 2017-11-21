@@ -18,10 +18,11 @@ def checkAllZones():
 def checkLogFile():
 	zonecount = 0
 	for x in range(1, installedZones):	
-		file = open("/tmp/pi-sprinkler.log", "r")
-		for line in file:
+		with open("/tmp/pi-sprinkler.log", "r") as logfile
+		for line in logfile:
 			if "Zone" + str(x) in line:
 				zonecount = zonecount + 1
+                                print zonecount
 		if zonecount > 60:
 				turnOffZone(x)
 
