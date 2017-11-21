@@ -1,7 +1,8 @@
+import logging
+logging.basicConfig(filename='/tmp/pi-sprinkler.log', level=logging.INFO)
+
 from relay_lib_seeed import *
 import sys 
-import logging
-logging.basicConfig(filename='/tmp/pi-sprinkler.log',level=logging.INFO)
 
 import RPi.GPIO as GPIO
 GPIO.setmode(GPIO.BCM)
@@ -14,8 +15,8 @@ zone = int(zone)
 state = sys.argv[2]
 
 if state == "On":
-	relay_on(zone)
+    relay_on(zone)
 
 if state == "Off":
-	relay_off(zone)
+    relay_off(zone)
 
