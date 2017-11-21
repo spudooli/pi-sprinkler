@@ -3,7 +3,7 @@
 #Is a fail safe to ensure that even if the Pi loses WIFI, the water won't run all night.
 
 import logging
-logging.basicConfig(filename='/tmp/pi-sprinkler.log', level=logging.INFO)
+logging.basicConfig(filename='/tmp/pi-sprinkler-failsafe.log', level=logging.INFO)
 
 from relay_lib_seeed import *
 
@@ -17,7 +17,7 @@ def checkAllZones():
 def checkLogFile():
     zonecount = 0
     for zonenumber in range(1, installedZones):
-        with open("/tmp/pi-sprinkler.log", "r") as logfile:
+        with open("/tmp/pi-sprinkler-failsafe.log", "r") as logfile:
             for line in logfile:
                 if "Zone" + str(zonenumber) in line:
                     print "found " + line
