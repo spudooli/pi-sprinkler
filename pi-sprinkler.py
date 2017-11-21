@@ -25,6 +25,7 @@ def checkAnyZonesRunning():
             zonerunningcount = zonerunningcount + 1
             print zonerunningcount
     if zonerunningcount > 0:
+        logging.info('Cannot turn zone' + str(zonenumber) + ' on because there is already a zone running')
         zonerunningcount = 0
         return True
     else:
@@ -33,8 +34,8 @@ def checkAnyZonesRunning():
 if state == "On":
     if not checkAnyZonesRunning():
         relay_on(zone)
-        logging.info('Zone' + str(zone) + ' on')
+        logging.info('Turned Zone ' + str(zone) + ' on')
 
 if state == "Off":
     relay_off(zone)
-    logging.info('Zone' + str(zone) + ' off')
+    logging.info('Turned Zone ' + str(zone) + ' off')
