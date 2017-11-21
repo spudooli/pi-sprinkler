@@ -10,21 +10,22 @@ logging.basicConfig(filename='/tmp/pi-sprinkler.log',level=logging.INFO)
 installedZones = int(5)
 
 def checkAllZones():
-	for x in range(1, installedZones):
-		if relay_get_port_status(x):
+	for zonenumber in range(1, installedZones):
+		if relay_get_port_status(zonenumber):
 			print "yep"
-			logging.info('Zone' + str(x) + ' on')
+			logging.info('Zone' + str(zonenumber) + ' on')
 
 def checkLogFile():
 	zonecount = 0
-	for x in range(1, installedZones):	
-		with open("/tmp/pi-sprinkler.log", "r") as logfile
-		for line in logfile:
-			if "Zone" + str(x) in line:
-				zonecount = zonecount + 1
-                                print zonecount
+	for zonenumber in range(1, installedZones):	
+		with open("/tmp/pi-sprinkler.log", "r") as logfile:
+			for line in logfile:
+				if "Zone" + str(zonenumber) in line:
+    				print "found " + line
+					zonecount = zonecount + 1
+					print zonecount
 		if zonecount > 60:
-				turnOffZone(x)
+			turnOffZone(x)
 
 def turnOffZone(zone):
 	#something
