@@ -14,10 +14,30 @@ import time
 import RPi.GPIO as GPIO
 GPIO.setmode(GPIO.BCM)
 
+Led_status = 1
+
 button_list = [17,18] 
+zone1LEDpin = 11
+zone2LEDpin = 12
 
 GPIO.setup(button_list, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
+GPIO.output(zone1LEDpin, GPIO.HIGH) # Set LedPin high(+3.3V) to off led
+GPIO.output(zone2LEDpin, GPIO.HIGH) # Set LedPin high(+3.3V) to off led
+
+def zone1LED(status):
+    GPIO.output(zone1LEDpin, status)  # switch led status(on-->off; off-->on)
+    if status == 1:
+        print 'led off...'
+    else:
+        print '...led on'
+
+def zone2LED(status):
+    GPIO.output(zone2LEDpin, status)  # switch led status(on-->off; off-->on)
+    if status == 1:
+        print 'led off...'
+    else:
+        print '...led on'
 
 def buttonZone1(channel):  
     print "Zone 1 button pressed"
