@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
-# A really basic sprinkler start stop script because Homevision has a scheduler/timer
-# and we have a backup in sprinkler-failsafe 
+""" A really basic sprinkler start stop script because Homevision has a scheduler/timer
+and we have a backup in sprinkler-failsafe """
 
 import logging
 logging.basicConfig(filename='/tmp/pi-sprinkler.log', level=logging.INFO)

@@ -1,8 +1,8 @@
 #!/usr/bin/python
 
-#Run from cron every minute. Checks if any zones are on and if so allows them to run for no 
-# more than 60 minutes before shutting them off automatically
-#Is a fail safe to ensure that even if the Pi loses WIFI, the water won't run all night.
+"""Run from cron every minute. Checks if any zones are on and if so allows them to run for no
+more than 60 minutes before shutting them off automatically
+Is a fail safe to ensure that even if the Pi loses WIFI, the water won't run all night. """
 
 import logging
 logging.basicConfig(filename='/tmp/pi-sprinkler-failsafe.log', level=logging.INFO)
