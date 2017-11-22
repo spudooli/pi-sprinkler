@@ -32,8 +32,8 @@ def checkLogFile():
                         zonecount = 0
 
 def turnOffZone(zone):
-    #something
-    print "Turning off zone " + int(zone)
+    relay_off(zone)
+    print "Turning off zone "
 
 checkAllZones()
 
