@@ -23,7 +23,6 @@ def checkLogFile():
         with open("/tmp/pi-sprinkler-failsafe.log", "r") as logfile:
             for line in logfile:
                 if "Zone" + str(zonenumber) in line:
-                    print "found " + line
                     zonecount = zonecount + 1
                     print zonecount
                     if zonecount > 60:
