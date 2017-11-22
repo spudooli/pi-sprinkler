@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 # Monitors GPIO buttons to allow local control of Sprinklers
 # Also provides LED status updates
 #Should be started by systemd
@@ -23,7 +25,6 @@ def Loop():
             print "Button Pushed"
             #relay_on(zone)
             time.sleep(0.2)
-   
 
 while 1:
     Loop()
