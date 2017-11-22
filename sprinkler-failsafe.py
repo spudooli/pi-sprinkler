@@ -13,6 +13,9 @@ def checkAllZones():
     for zonenumber in range(1, installedZones):
         if relay_get_port_status(zonenumber):
             logging.info('Zone' + str(zonenumber) + ' on')
+        else:
+            logging.info('No zones running')
+
 
 def checkLogFile():
     zonecount = 0
