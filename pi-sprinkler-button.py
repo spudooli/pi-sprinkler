@@ -30,10 +30,10 @@ GPIO.add_event_detect(17, GPIO.FALLING, callback=buttonZone1, bouncetime=300)
 GPIO.add_event_detect(18, GPIO.FALLING, callback=buttonZone2, bouncetime=300)
 
 
-def DoTheLoop():
-    count = 0
-    while count < 30:
-        print count
+#def DoTheLoop():
+#    count = 0
+#    while count < 30:
+#        print count
 
-while 1:
-    DoTheLoop()
+#while 1:
+#:    DoTheLoop()
