@@ -35,8 +35,9 @@ def checkLogFile():
 def turnOffZone(zone):
     relay_off(zone)
     print "Turning off zone "
-    os.remove("/tmp/pi-sprinkler-failsafe.log")
-
-checkAllZones()
+    with open('/tmp/pi-sprinkler-failsafe.log', 'w'):
+        pass
 
 checkLogFile()
+
+checkAllZones()
