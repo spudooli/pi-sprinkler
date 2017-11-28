@@ -24,11 +24,11 @@ GPIO.setup(button_list, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 GPIO.setup(zone1LEDpin,GPIO.OUT)
 
 
-GPIO.output(zone1LEDpin, GPIO.HIGH) # Set LedPin high(+3.3V) to off led
+GPIO.output(zone1LEDpin, GPIO.LOW) # Set LedPin high(+3.3V) to off led
 
 def buttonZone1(channel):
     print "Zone 1 button pressed"
-    GPIO.output(zone1LEDpin, status)
+    GPIO.output(zone1LEDpin,  GPIO.HIGH)
 
 
 GPIO.add_event_detect(18, GPIO.FALLING, callback=buttonZone1, bouncetime=300)
