@@ -14,16 +14,23 @@ import time
 import RPi.GPIO as GPIO
 GPIO.setmode(GPIO.BCM)
 
-Led_status = 1
 installedZones = int(5)
 zone1Button = 18
+zone2Button = 17
 zone1LEDpin = 23
-
+zone2LEDpin = 24
+GPIO.setup(zone1LEDpin,GPIO.OUT)
+GPIO.setup(zone2LEDpin,GPIO.OUT)
+GPIO.output(zone1LEDpin, GPIO.LOW)
+GPIO.output(zone2LEDpin, GPIO.LOW)
 
 GPIO.setup(zone1Button, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-GPIO.setup(zone1LEDpin,GPIO.OUT)
+GPIO.setup(zone2Button, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
-GPIO.output(zone1LEDpin, GPIO.LOW) # Set LedPin high(+3.3V) to off led
+def allLEDsOff():
+    GPIO.output(zone2LEDpin, GPIO.LOW)
+    GPIO.output(zone2LEDpin, GPIO.LOW)
+
 
 def checkAnyZonesRunning():
     zonerunningcount = 0
@@ -44,11 +51,10 @@ def buttonZone1(status):
         relay_on(1)
         logging.info('Turned Zone 1 on')
         GPIO.output(zone1LEDpin, GPIO.HIGH)
-
     else:
-        relay_off(1)
+        relay_all_off()
         logging.info('Turned Zone 1 on')
-        GPIO.output(zone1LEDpin, GPIO.LOW)
+        allLEDsOff()
 
 GPIO.add_event_detect(zone1Button, GPIO.FALLING, callback=buttonZone1, bouncetime=300)
 

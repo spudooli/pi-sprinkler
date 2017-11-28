@@ -7,18 +7,26 @@ import logging
 logging.basicConfig(filename='/tmp/pi-sprinkler.log', level=logging.INFO)
 
 from relay_lib_seeed import *
-import sys 
+import sys
 
 import RPi.GPIO as GPIO
 GPIO.setmode(GPIO.BCM)
 
 GPIO.setup(18, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+zone1LEDpin = 23
+zone2LEDpin = 24
+GPIO.setup(zone1LEDpin,GPIO.OUT)
+GPIO.setup(zone2LEDpin,GPIO.OUT)
 
 zone = sys.argv[1]
 zone = int(zone)
 state = sys.argv[2]
 
 installedZones = int(5)
+
+def allLEDsOff():
+    GPIO.output(zone2LEDpin, GPIO.LOW)
+    GPIO.output(zone2LEDpin, GPIO.LOW)
 
 def checkAnyZonesRunning():
     zonerunningcount = 0
@@ -33,11 +41,24 @@ def checkAnyZonesRunning():
     else:
         return False
 
-if state == "On":
-    if not checkAnyZonesRunning():
-        relay_on(zone)
-        logging.info('Turned Zone ' + str(zone) + ' on')
+if zone == "1":
+    if state == "On":
+        if not checkAnyZonesRunning():
+            relay_on(1)
+            logging.info('Turned Zone 1 on')
+            GPIO.output(zone1LEDpin, GPIO.HIGH)
+    if state == "Off":
+        relay_off(1)
+        logging.info('Turned Zone 1 off')
+        allLEDsOff()
 
-if state == "Off":
-    relay_off(zone)
-    logging.info('Turned Zone ' + str(zone) + ' off')
+if zone == "2":
+    if state == "On":
+        if not checkAnyZonesRunning():
+            relay_on(2)
+            logging.info('Turned Zone 2 on')
+            GPIO.output(zone2LEDpin, GPIO.HIGH)
+    if state == "Off":
+        relay_off(2)
+        logging.info('Turned Zone 2 off')
+        allLEDsOff()
