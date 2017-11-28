@@ -10,7 +10,19 @@ logging.basicConfig(filename='/tmp/pi-sprinkler-failsafe.log', level=logging.INF
 
 from relay_lib_seeed import *
 
+import RPi.GPIO as GPIO
+GPIO.setmode(GPIO.BCM)
+
+zone1LEDpin = 23
+zone2LEDpin = 24
+GPIO.setup(zone1LEDpin,GPIO.OUT)
+GPIO.setup(zone2LEDpin,GPIO.OUT)
+
 installedZones = int(5)
+
+def allLEDsOff():
+    GPIO.output(zone1LEDpin, GPIO.LOW)
+    GPIO.output(zone2LEDpin, GPIO.LOW)
 
 def checkAllZones():
     for zonenumber in range(1, installedZones):
@@ -34,6 +46,7 @@ def checkLogFile():
 
 def turnOffZone(zone):
     relay_off(zone)
+    allLEDsOff()
     print "Turning off zone "
     with open('/tmp/pi-sprinkler-failsafe.log', 'w'):
         pass
