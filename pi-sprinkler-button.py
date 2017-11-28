@@ -31,7 +31,7 @@ def buttonZone1(channel):
     GPIO.output(zone1LEDpin, status)
 
 
-GPIO.add_event_detect(18, GPIO.FALLING, callback=buttonZone2, bouncetime=300)
+GPIO.add_event_detect(18, GPIO.FALLING, callback=buttonZone1, bouncetime=300)
 
 
 def DoTheLoop():
