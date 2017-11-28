@@ -25,7 +25,7 @@ state = sys.argv[2]
 installedZones = int(5)
 
 def allLEDsOff():
-    GPIO.output(zone2LEDpin, GPIO.LOW)
+    GPIO.output(zone1LEDpin, GPIO.LOW)
     GPIO.output(zone2LEDpin, GPIO.LOW)
 
 def checkAnyZonesRunning():

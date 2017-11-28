@@ -28,7 +28,7 @@ GPIO.setup(zone1Button, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 GPIO.setup(zone2Button, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
 def allLEDsOff():
-    GPIO.output(zone2LEDpin, GPIO.LOW)
+    GPIO.output(zone1LEDpin, GPIO.LOW)
     GPIO.output(zone2LEDpin, GPIO.LOW)
 
 
