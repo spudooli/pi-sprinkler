@@ -15,12 +15,12 @@ import RPi.GPIO as GPIO
 GPIO.setmode(GPIO.BCM)
 
 Led_status = 1
-
+installedZones = int(5)
 zone1Button = 18
 zone1LEDpin = 23
 
 
-GPIO.setup(button_list, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+GPIO.setup(zone1Button, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 GPIO.setup(zone1LEDpin,GPIO.OUT)
 
 GPIO.output(zone1LEDpin, GPIO.LOW) # Set LedPin high(+3.3V) to off led
