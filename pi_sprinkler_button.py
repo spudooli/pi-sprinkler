@@ -38,16 +38,16 @@ def checkAnyZonesRunning():
     else:
         return False
 
-def buttonZone1():
+def buttonZone1(status):
     print "Zone 1 button pressed"
     if not checkAnyZonesRunning():
         relay_on(1)
-        logging.info('Turned Zone ' + str(zone) + ' on')
+        logging.info('Turned Zone 1 on')
         GPIO.output(zone1LEDpin, GPIO.HIGH)
 
     else:
         relay_off(1)
-        logging.info('Turned Zone ' + str(zone) + ' on')
+        logging.info('Turned Zone 1 on')
         GPIO.output(zone1LEDpin, GPIO.LOW)
 
 GPIO.add_event_detect(zone1Button, GPIO.FALLING, callback=buttonZone1, bouncetime=300)
