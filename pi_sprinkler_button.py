@@ -8,7 +8,6 @@ import logging
 logging.basicConfig(filename='/tmp/pi-sprinkler.log',level=logging.INFO)
 
 from relay_lib_seeed import *
-from pi_sprinkler import checkAnyZonesRunning
 
 import time
 
@@ -24,8 +23,20 @@ zone1LEDpin = 23
 GPIO.setup(button_list, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 GPIO.setup(zone1LEDpin,GPIO.OUT)
 
-
 GPIO.output(zone1LEDpin, GPIO.LOW) # Set LedPin high(+3.3V) to off led
+
+def checkAnyZonesRunning():
+    zonerunningcount = 0
+    for zonenumber in range(1, installedZones):
+        if relay_get_port_status(zonenumber):
+            zonerunningcount = zonerunningcount + 1
+            print zonerunningcount
+    if zonerunningcount > 0:
+        logging.info('Cannot turn zone' + str(zonenumber) + ' on there is already a zone running')
+        zonerunningcount = 0
+        return True
+    else:
+        return False
 
 def buttonZone1():
     print "Zone 1 button pressed"
@@ -39,10 +50,7 @@ def buttonZone1():
         logging.info('Turned Zone ' + str(zone) + ' on')
         GPIO.output(zone1LEDpin, GPIO.LOW)
 
-
-
 GPIO.add_event_detect(zone1Button, GPIO.FALLING, callback=buttonZone1, bouncetime=300)
-
 
 try:
     while True:
