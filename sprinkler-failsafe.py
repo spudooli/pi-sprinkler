@@ -15,7 +15,7 @@ GPIO.setmode(GPIO.BCM)
 
 zone1Button = 24
 zone2Button = 18
-zone1LEDpin = 3
+zone1LEDpin = 4
 zone2LEDpin = 23
 GPIO.setup(zone1LEDpin,GPIO.OUT)
 GPIO.setup(zone2LEDpin,GPIO.OUT)
