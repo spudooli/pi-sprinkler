@@ -53,7 +53,9 @@ def buttonZone1(status):
         GPIO.output(zone1LEDpin, GPIO.HIGH)
     else:
         relay_all_off()
-        logging.info('Turned Zone 1 on')
+        logging.info('Turned Zone 1 off')
+        with open('/tmp/pi-sprinkler-failsafe.log', 'w'):
+            pass
         allLEDsOff()
 
 def buttonZone2(status):
@@ -64,7 +66,9 @@ def buttonZone2(status):
         GPIO.output(zone2LEDpin, GPIO.HIGH)
     else:
         relay_all_off()
-        logging.info('Turned Zone 1 on')
+        logging.info('Turned Zone 1 off')
+        with open('/tmp/pi-sprinkler-failsafe.log', 'w'):
+            pass
         allLEDsOff()
 
 GPIO.add_event_detect(zone1Button, GPIO.FALLING, callback=buttonZone1, bouncetime=300)
