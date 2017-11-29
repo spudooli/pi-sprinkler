@@ -13,8 +13,10 @@ from relay_lib_seeed import *
 import RPi.GPIO as GPIO
 GPIO.setmode(GPIO.BCM)
 
-zone1LEDpin = 23
-zone2LEDpin = 24
+zone1Button = 24
+zone2Button = 18
+zone1LEDpin = 3
+zone2LEDpin = 23
 GPIO.setup(zone1LEDpin,GPIO.OUT)
 GPIO.setup(zone2LEDpin,GPIO.OUT)
 
@@ -45,9 +47,9 @@ def checkLogFile():
                         zonecount = 0
 
 def turnOffZone(zone):
-    relay_off(zone)
+    relay_all_off()
     allLEDsOff()
-    print "Turning off zone "
+    print "Turning off all zones"
     with open('/tmp/pi-sprinkler-failsafe.log', 'w'):
         pass
 

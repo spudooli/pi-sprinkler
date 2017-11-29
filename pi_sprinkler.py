@@ -13,8 +13,10 @@ import RPi.GPIO as GPIO
 GPIO.setmode(GPIO.BCM)
 
 GPIO.setup(18, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-zone1LEDpin = 23
-zone2LEDpin = 24
+zone1Button = 24
+zone2Button = 18
+zone1LEDpin = 3
+zone2LEDpin = 23
 GPIO.setup(zone1LEDpin,GPIO.OUT)
 GPIO.setup(zone2LEDpin,GPIO.OUT)
 

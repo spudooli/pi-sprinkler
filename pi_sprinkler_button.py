@@ -15,10 +15,10 @@ import RPi.GPIO as GPIO
 GPIO.setmode(GPIO.BCM)
 
 installedZones = int(5)
-zone1Button = 4
-zone2Button = 17
-zone1LEDpin = 23
-zone2LEDpin = 24
+zone1Button = 24
+zone2Button = 18
+zone1LEDpin = 3
+zone2LEDpin = 23
 GPIO.setup(zone1LEDpin,GPIO.OUT)
 GPIO.setup(zone2LEDpin,GPIO.OUT)
 GPIO.output(zone1LEDpin, GPIO.LOW)
