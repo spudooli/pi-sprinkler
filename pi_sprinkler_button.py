@@ -71,6 +71,8 @@ def buttonZone2(status):
             pass
         allLEDsOff()
 
+logging.info('Started Pi Sprinkler Button')
+
 GPIO.add_event_detect(zone1Button, GPIO.FALLING, callback=buttonZone1, bouncetime=300)
 GPIO.add_event_detect(zone2Button, GPIO.FALLING, callback=buttonZone2, bouncetime=300)
 
@@ -80,3 +82,4 @@ try:
 
 except KeyboardInterrupt:
     GPIO.cleanup()
+    logging.info('Stopped Pi Sprinkler Button - Stopped')
