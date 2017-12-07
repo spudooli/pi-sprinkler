@@ -13,6 +13,7 @@ import time
 
 import RPi.GPIO as GPIO
 GPIO.setmode(GPIO.BCM)
+GPIO.setwarnings(False)
 
 installedZones = int(5)
 zone1Button = 24
