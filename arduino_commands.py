@@ -9,6 +9,7 @@ arduino = serial.Serial(
 )
 
 def checkZoneRunning(command):
+    print command
     arduino.write(command)
     line = ""
     line = arduino.readline()   #read a '\n' terminated lin
@@ -16,6 +17,7 @@ def checkZoneRunning(command):
         return True
 
 def relay_on(command):
+    print command
     arduino.write(command)
 
 def relay_all_off():
