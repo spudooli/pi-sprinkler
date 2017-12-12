@@ -24,8 +24,8 @@ def relay_on(command):
     arduino.write(command)
 
 def relay_all_off():
-    arduino.write(B)
-    arduino.write(D)
-    arduino.write(F)
-    arduino.write(H)
+    arduino.write('B')
+    arduino.write('D')
+    arduino.write('F')
+    arduino.write('H')
 
