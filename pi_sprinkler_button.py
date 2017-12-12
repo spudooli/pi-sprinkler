@@ -9,8 +9,6 @@ logging.basicConfig(filename='/tmp/pi-sprinkler.log',level=logging.INFO)
 
 from relay_lib_seeed import *
 
-import time
-
 import RPi.GPIO as GPIO
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
