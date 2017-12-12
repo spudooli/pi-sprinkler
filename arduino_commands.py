@@ -15,7 +15,7 @@ def checkZoneRunning(command):
     if line == "1":
         return True
 
-def arduino_zone(command):
+def relay_on(command):
     arduino.write(command)
 
 def relay_all_off():
