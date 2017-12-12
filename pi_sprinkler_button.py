@@ -9,6 +9,8 @@ logging.basicConfig(filename='/tmp/pi-sprinkler.log',level=logging.INFO)
 
 from relay_lib_seeed import *
 
+import time
+
 import RPi.GPIO as GPIO
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
@@ -46,9 +48,6 @@ def checkAnyZonesRunning():
 
 def buttonZone1(status):
     print "Zone 1 button pressed"
-    relay_on(1)
-    logging.info('Turned Zone 1 on')
-    GPIO.output(zone1LEDpin, GPIO.HIGH)
     if not checkAnyZonesRunning():
         relay_on(1)
         logging.info('Turned Zone 1 on')
