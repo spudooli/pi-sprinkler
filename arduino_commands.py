@@ -13,8 +13,11 @@ def checkZoneRunning(command):
     arduino.write(command)
     line = ""
     line = arduino.readline()   #read a '\n' terminated lin
+    print line
     if line == "1":
         return True
+    else:
+        return False
 
 def relay_on(command):
     print command
