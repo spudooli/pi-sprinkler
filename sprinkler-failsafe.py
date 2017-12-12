@@ -14,6 +14,7 @@ from arduino_commands import *
 
 import RPi.GPIO as GPIO
 GPIO.setmode(GPIO.BCM)
+GPIO.setwarnings(False)
 
 zone1Button = 24
 zone2Button = 18

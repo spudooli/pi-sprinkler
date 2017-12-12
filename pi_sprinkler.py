@@ -13,6 +13,7 @@ import sys
 
 import RPi.GPIO as GPIO
 GPIO.setmode(GPIO.BCM)
+GPIO.setwarnings(False)
 
 zone1LEDpin = 4
 zone2LEDpin = 23
