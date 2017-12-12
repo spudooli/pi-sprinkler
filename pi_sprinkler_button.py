@@ -49,16 +49,19 @@ def checkAnyZonesRunning():
 
 def buttonZone1(status):
     print "Zone 1 button pressed"
-    if not checkAnyZonesRunning():
-        relay_on(A)
-        logging.info('Turned Zone 1 on')
-        GPIO.output(zone1LEDpin, GPIO.HIGH)
-    else:
-        relay_all_off()
-        logging.info('Turned Zone 1 off')
-        with open('/tmp/pi-sprinkler-failsafe.log', 'w'):
-            pass
-        allLEDsOff()
+    relay_on(A)
+    logging.info('Turned Zone 1 on')
+    GPIO.output(zone1LEDpin, GPIO.HIGH)
+    #if not checkAnyZonesRunning():
+        #relay_on(A)
+        #logging.info('Turned Zone 1 on')
+        #GPIO.output(zone1LEDpin, GPIO.HIGH)
+    #else:
+        #relay_all_off()
+        #logging.info('Turned Zone 1 off')
+        #with open('/tmp/pi-sprinkler-failsafe.log', 'w'):
+       #     pass
+       # allLEDsOff()
 
 def buttonZone2(status):
     print "Zone 2 button pressed"
