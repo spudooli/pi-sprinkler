@@ -49,7 +49,7 @@ def checkAnyZonesRunning():
 
 def buttonZone1(status):
     print "Zone 1 button pressed"
-    relay_on(A)
+    relay_on('A')
     logging.info('Turned Zone 1 on')
     GPIO.output(zone1LEDpin, GPIO.HIGH)
     #if not checkAnyZonesRunning():
