@@ -7,7 +7,6 @@ import logging
 logging.basicConfig(filename='/tmp/pi-sprinkler.log', level=logging.INFO)
 
 from relay_lib_seeed import *
-from arduino_commands import *
 
 import sys
 

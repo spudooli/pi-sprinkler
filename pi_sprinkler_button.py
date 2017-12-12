@@ -7,7 +7,7 @@ Should be started by systemd"""
 import logging
 logging.basicConfig(filename='/tmp/pi-sprinkler.log',level=logging.INFO)
 
-from arduino_commands import *
+from relay_lib_seeed import *
 
 import time
 
@@ -35,9 +35,8 @@ def allLEDsOff():
 
 def checkAnyZonesRunning():
     zonerunningcount = 0
-    allzones = ['A', 'C', 'E', 'G']
-    for x in allzones:
-        if checkZoneRunning(x):
+    for zonenumber in range(1, installedZones):
+        if relay_get_port_status(zonenumber):
             zonerunningcount = zonerunningcount + 1
             print zonerunningcount
     if zonerunningcount > 0:
@@ -49,24 +48,24 @@ def checkAnyZonesRunning():
 
 def buttonZone1(status):
     print "Zone 1 button pressed"
-    relay_on('A')
+    relay_on(1)
     logging.info('Turned Zone 1 on')
     GPIO.output(zone1LEDpin, GPIO.HIGH)
-    #if not checkAnyZonesRunning():
-        #relay_on(A)
-        #logging.info('Turned Zone 1 on')
-        #GPIO.output(zone1LEDpin, GPIO.HIGH)
-    #else:
-        #relay_all_off()
-        #logging.info('Turned Zone 1 off')
-        #with open('/tmp/pi-sprinkler-failsafe.log', 'w'):
-       #     pass
-       # allLEDsOff()
+    if not checkAnyZonesRunning():
+        relay_on(1)
+        logging.info('Turned Zone 1 on')
+        GPIO.output(zone1LEDpin, GPIO.HIGH)
+    else:
+        relay_all_off()
+        logging.info('Turned Zone 1 off')
+        with open('/tmp/pi-sprinkler-failsafe.log', 'w'):
+            pass
+        allLEDsOff()
 
 def buttonZone2(status):
     print "Zone 2 button pressed"
     if not checkAnyZonesRunning():
-        relay_on(C)
+        relay_on(2)
         logging.info('Turned Zone 1 on')
         GPIO.output(zone2LEDpin, GPIO.HIGH)
     else:
