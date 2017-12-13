@@ -46,7 +46,7 @@ def checkAnyZonesRunning():
     else:
         return False
 
-def buttonZone1():
+def buttonZone1(status):
     print "Zone 1 button pressed"
     if not checkAnyZonesRunning():
         relay_on(1)
@@ -59,7 +59,7 @@ def buttonZone1():
             pass
         allLEDsOff()
 
-def buttonZone2():
+def buttonZone2(status):
     print "Zone 2 button pressed"
     if not checkAnyZonesRunning():
         relay_on(2)
