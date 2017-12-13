@@ -9,8 +9,6 @@ import os
 logging.basicConfig(filename='/tmp/pi-sprinkler-failsafe.log', level=logging.INFO)
 
 from relay_lib_seeed import *
-from arduino_commands import *
-
 
 import RPi.GPIO as GPIO
 GPIO.setmode(GPIO.BCM)
