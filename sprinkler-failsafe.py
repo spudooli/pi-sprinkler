@@ -57,3 +57,5 @@ def turnOffZone(zone):
 checkLogFile()
 
 checkAllZones()
+
+GPIO.cleanup()
