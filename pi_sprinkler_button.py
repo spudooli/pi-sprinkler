@@ -33,7 +33,7 @@ def checkAnyZonesRunning():
     for zonenumber in range(1, installedZones):
         if relay_get_port_status(zonenumber):
             zonerunningcount = zonerunningcount + 1
-            print zonerunningcount
+            print(zonerunningcount)
     if zonerunningcount > 0:
         logging.info('Cannot turn zone' + str(zonenumber) + ' on there is already a zone running')
         zonerunningcount = 0
