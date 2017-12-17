@@ -10,14 +10,10 @@ from relay_lib_seeed import *
 
 import sys
 
-import RPi.GPIO as GPIO
-GPIO.setmode(GPIO.BCM)
-GPIO.setwarnings(False)
+from gpiozero import LED
 
-zone1LEDpin = 4
-zone2LEDpin = 23
-GPIO.setup(zone1LEDpin,GPIO.OUT)
-GPIO.setup(zone2LEDpin,GPIO.OUT)
+zone1LEDpin = LED(4)
+zone2LEDpin = LED(23)
 
 zone = sys.argv[1]
 zone = int(zone)
@@ -26,8 +22,8 @@ state = sys.argv[2]
 installedZones = int(5)
 
 def allLEDsOff():
-    GPIO.output(zone1LEDpin, GPIO.LOW)
-    GPIO.output(zone2LEDpin, GPIO.LOW)
+    zone1LEDpin.off()
+    zone2LEDpin.off()
 
 def checkAnyZonesRunning():
     zonerunningcount = 0
@@ -47,7 +43,7 @@ if zone == "1":
         if not checkAnyZonesRunning():
             relay_on(1)
             logging.info('Turned Zone 1 on')
-            GPIO.output(zone1LEDpin, GPIO.HIGH)
+            zone1LEDpin.on()
     if state == "Off":
         relay_off(1)
         logging.info('Turned Zone 1 off')
@@ -58,7 +54,7 @@ if zone == "2":
         if not checkAnyZonesRunning():
             relay_on(2)
             logging.info('Turned Zone 2 on')
-            GPIO.output(zone2LEDpin, GPIO.HIGH)
+            zone2LEDpin.on()
     if state == "Off":
         relay_off(2)
         logging.info('Turned Zone 2 off')
