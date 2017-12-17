@@ -38,6 +38,9 @@ def checkAnyZonesRunning():
     else:
         return False
 
+print zone
+print state
+
 if zone == "1":
     if state == "On":
         if not checkAnyZonesRunning():
