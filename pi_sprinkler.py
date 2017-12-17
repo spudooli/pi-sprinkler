@@ -41,11 +41,11 @@ def checkAnyZonesRunning():
 print(zone)
 print(state)
 
-if zone == "0":
+if zone == 0:
     relay_all_off()
     allLEDsOff()
 
-if zone == "1":
+if zone == 1:
     print("In 1")
     if state == "On":
         if not checkAnyZonesRunning():
@@ -57,7 +57,7 @@ if zone == "1":
         logging.info('Turned Zone 1 off')
         allLEDsOff()
 
-if zone == "2":
+if zone == 2:
     print("In 2")
     if state == "On":
         if not checkAnyZonesRunning():
