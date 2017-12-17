@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 """Monitors GPIO buttons to allow local control of Sprinklers
 Also provides LED status updates
@@ -42,7 +42,7 @@ def checkAnyZonesRunning():
         return False
 
 def buttonZone1(status):
-    print "Zone 1 button pressed"
+    print("Zone 1 button pressed")
     if not checkAnyZonesRunning():
         relay_on(1)
         logging.info('Turned Zone 1 on')
