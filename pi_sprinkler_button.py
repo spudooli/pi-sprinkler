@@ -72,4 +72,10 @@ logging.info('Started Pi Sprinkler Button')
 zone1Button.when_held = buttonZone1
 zone2Button.when_held = buttonZone2
 
-pause()
+try:
+    while True:
+        time.sleep(0.2)
+
+except KeyboardInterrupt:
+    logging.info('Stopped Pi Sprinkler Button - Stopped')
+
