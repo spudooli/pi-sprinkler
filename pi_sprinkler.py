@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 """ A really basic sprinkler start stop script because Homevision has a scheduler/timer
 and we have a backup in sprinkler-failsafe """
@@ -40,6 +40,10 @@ def checkAnyZonesRunning():
 
 print zone
 print state
+
+if zone == "0":
+    relay_all_off()
+    allLEDsOff()
 
 if zone == "1":
     if state == "On":

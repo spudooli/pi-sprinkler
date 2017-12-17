@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 """Run from cron every minute. Checks if any zones are on and if so allows them to run for no
 more than 60 minutes before shutting them off automatically
@@ -10,16 +10,7 @@ logging.basicConfig(filename='/tmp/pi-sprinkler-failsafe.log', level=logging.INF
 
 from relay_lib_seeed import *
 
-from gpiozero import LED
-
-zone1LEDpin = LED(4)
-zone2LEDpin = LED(23)
-
 installedZones = int(5)
-
-def allLEDsOff():
-    zone1LEDpin.off()
-    zone2LEDpin.off()
 
 def checkAllZones():
     for zonenumber in range(1, installedZones):
@@ -36,15 +27,14 @@ def checkLogFile():
             for line in logfile:
                 if "Zone" + str(zonenumber) in line:
                     zonecount = zonecount + 1
-                    print zonecount
+                    print(zonecount)
                     if zonecount > 60:
                         turnOffZone(zonenumber)
                         zonecount = 0
 
 def turnOffZone(zone):
-    relay_all_off()
-    allLEDsOff()
-    print "Turning off all zones"
+    os.system("/usr/bin/python3 /home/pi/pi-sprinkler/pi_sprinkler.py 0 Off")
+    print("Turning off all zones")
     with open('/tmp/pi-sprinkler-failsafe.log', 'w'):
         pass
 
