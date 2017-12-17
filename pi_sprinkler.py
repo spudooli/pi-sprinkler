@@ -43,9 +43,11 @@ if zone == 0:
     allLEDsOff()
 
 if zone == 1:
-    print("In 1")
     if state == "On":
         if not checkAnyZonesRunning():
+            file = open(“/tmp/zone1.txt”,”w”)
+            file.write(“zone1”)
+            file.close
             relay_on(1)
             logging.info('Turned Zone 1 on')
             zone1LEDpin.blink(background=True)
@@ -55,9 +57,11 @@ if zone == 1:
         allLEDsOff()
 
 if zone == 2:
-    print("In 2")
     if state == "On":
         if not checkAnyZonesRunning():
+            file = open(“/tmp/zone2.txt”,”w”)
+            file.write(“zone2”)
+            file.close
             relay_on(2)
             logging.info('Turned Zone 2 on')
             zone2LEDpin.blink(background=True)
