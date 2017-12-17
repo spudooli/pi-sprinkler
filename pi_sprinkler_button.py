@@ -11,6 +11,8 @@ from relay_lib_seeed import *
 
 from gpiozero import LED, Button
 
+from signal import pause
+
 import time
 
 
