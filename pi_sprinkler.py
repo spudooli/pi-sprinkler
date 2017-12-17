@@ -38,9 +38,6 @@ def checkAnyZonesRunning():
     else:
         return False
 
-print(zone)
-print(state)
-
 if zone == 0:
     relay_all_off()
     allLEDsOff()
@@ -51,7 +48,7 @@ if zone == 1:
         if not checkAnyZonesRunning():
             relay_on(1)
             logging.info('Turned Zone 1 on')
-            zone1LEDpin.on()
+            zone1LEDpin.blink(background=True)
     if state == "Off":
         relay_off(1)
         logging.info('Turned Zone 1 off')
@@ -63,7 +60,7 @@ if zone == 2:
         if not checkAnyZonesRunning():
             relay_on(2)
             logging.info('Turned Zone 2 on')
-            zone2LEDpin.on()
+            zone2LEDpin.blink(background=True)
     if state == "Off":
         relay_off(2)
         logging.info('Turned Zone 2 off')
