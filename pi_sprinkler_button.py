@@ -55,7 +55,7 @@ def buttonZone1(status):
         allLEDsOff()
 
 def buttonZone2(status):
-    print "Zone 2 button pressed"
+    print("Zone 2 button pressed")
     if not checkAnyZonesRunning():
         relay_on(2)
         logging.info('Turned Zone 1 on')
