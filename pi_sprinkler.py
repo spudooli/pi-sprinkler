@@ -49,7 +49,7 @@ if zone == 1:
     if state == "On":
         if not checkAnyZonesRunning():
             file = open('/tmp/zone1.txt','w')
-            file.write(“zone1”)
+            file.write("zone1")
             file.close
             relay_on(1)
             logging.info('Turned Zone 1 on')
@@ -64,7 +64,7 @@ if zone == 2:
     if state == "On":
         if not checkAnyZonesRunning():
             file = open('/tmp/zone2.txt','w')
-            file.write(“zone2”)
+            file.write("zone2")
             file.close
             relay_on(2)
             logging.info('Turned Zone 2 on')
