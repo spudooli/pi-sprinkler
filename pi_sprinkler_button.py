@@ -74,12 +74,12 @@ zone2Button.when_held = buttonZone2
 
 try:
     while True:
-        time.sleep(4)
+        time.sleep(.1)
         with open("/tmp/zone1.txt", "r") as zoneLED1file:
             print("Opening zone1 file")
             for line in zoneLED1file:
                 if "Zone1" in line:
-                    zone1LEDpin.blink(background=True)
+                    zone1LEDpin.blink()
                 else:
                     allLEDsOff()
                     with open('/tmp/zone1.txt', 'w'):
@@ -88,7 +88,7 @@ try:
             print("Opening zone1 file")
             for line in zoneLED2file:
                 if "Zone2" in line:
-                    zone2LEDpin.blink(background=True)
+                    zone2LEDpin.blink()
                 else:
                     allLEDsOff()
                     with open('/tmp/zone2.txt', 'w'):
