@@ -25,7 +25,9 @@ zone2LEDpin = LED(23)
 
 def allLEDsOff():
     zone1LEDpin.off()
+    zone1LEDpin.close()
     zone2LEDpin.off()
+    zone2LEDpin.close()
 
 
 def checkAnyZonesRunning():
@@ -74,11 +76,10 @@ zone2Button.when_held = buttonZone2
 
 try:
     while True:
-        time.sleep(.1)
+        time.sleep(1)
         with open("/tmp/zone1.txt", "r") as zoneLED1file:
             for line in zoneLED1file:
                 if "Zone1" in line:
-                    print("Found Zone1")
                     zone1LEDpin.blink()
                 else:
                     allLEDsOff()

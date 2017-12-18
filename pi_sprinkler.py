@@ -23,7 +23,9 @@ installedZones = int(5)
 
 def allLEDsOff():
     zone1LEDpin.off()
+    zone1LEDpin.close()
     zone2LEDpin.off()
+    zone2LEDpin.close()
 
 def checkAnyZonesRunning():
     zonerunningcount = 0
