@@ -33,7 +33,7 @@ def checkLogFile():
                         zonecount = 0
 
 def turnOffZone(zone):
-    os.system("/usr/bin/python3 /home/pi/pi-sprinkler/pi_sprinkler.py 0 Off")
+    relay_all_off()
     print("Turning off all zones")
     with open('/tmp/pi-sprinkler-failsafe.log', 'w'):
         pass
