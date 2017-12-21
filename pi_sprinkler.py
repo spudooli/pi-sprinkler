@@ -32,37 +32,21 @@ def checkAnyZonesRunning():
 
 if zone == 0:
     relay_all_off()
-    with open('/tmp/zone1.txt', 'w'):
-        pass
-    with open('/tmp/zone2.txt', 'w'):
-        pass
 
 if zone == 1:
     if state == "On":
         if not checkAnyZonesRunning():
-            file = open('/tmp/zone1.txt','w')
-            file.write("Zone1On")
-            file.close
             relay_on(1)
             logging.info('Turned Zone 1 on')
     if state == "Off":
-            file = open('/tmp/zone1.txt','w')
-            file.write("Zone1Off")
-            file.close
         relay_off(1)
         logging.info('Turned Zone 1 off')
 
 if zone == 2:
     if state == "On":
         if not checkAnyZonesRunning():
-            file = open('/tmp/zone2.txt','w')
-            file.write("Zone2On")
-            file.close
             relay_on(2)
             logging.info('Turned Zone 2 on')
     if state == "Off":
-        file = open('/tmp/zone2.txt','w')
-        file.write("Zone2Off")
-        file.close
         relay_off(2)
         logging.info('Turned Zone 2 off')
