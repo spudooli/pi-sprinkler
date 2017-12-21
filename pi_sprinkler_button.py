@@ -11,8 +11,6 @@ from relay_lib_seeed import *
 
 from gpiozero import LED, Button
 
-from signal import pause
-
 import time
 
 
@@ -21,6 +19,9 @@ zone1Button = Button(24, hold_time=2)
 zone2Button = Button(18, hold_time=2)
 zone1LEDpin = LED(4)
 zone2LEDpin = LED(23)
+
+button1pressed = False
+button2pressed = False
 
 
 def allLEDsOff():
@@ -48,12 +49,14 @@ def buttonZone1(status):
     if not checkAnyZonesRunning():
         relay_on(1)
         logging.info('Turned Zone 1 on')
+        button1pressed = True
         zone1LEDpin.on()
     else:
         relay_all_off()
         logging.info('Turned Zone 1 off')
         with open('/tmp/pi-sprinkler-failsafe.log', 'w'):
             pass
+        button1pressed = False
         allLEDsOff()
 
 def buttonZone2(status):
@@ -61,12 +64,14 @@ def buttonZone2(status):
     if not checkAnyZonesRunning():
         relay_on(2)
         logging.info('Turned Zone 1 on')
+        button2pressed = True
         zone2LEDpin.on()
     else:
         relay_all_off()
         logging.info('Turned Zone 1 off')
         with open('/tmp/pi-sprinkler-failsafe.log', 'w'):
             pass
+        button2pressed = False
         allLEDsOff()
 
 logging.info('Started Pi Sprinkler Button')
