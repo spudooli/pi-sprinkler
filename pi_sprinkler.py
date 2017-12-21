@@ -10,22 +10,12 @@ from relay_lib_seeed import *
 
 import sys
 
-from gpiozero import LED
-
-zone1LEDpin = LED(4)
-zone2LEDpin = LED(23)
-
 zone = sys.argv[1]
 zone = int(zone)
 state = sys.argv[2]
 
 installedZones = int(5)
 
-def allLEDsOff():
-    zone1LEDpin.off()
-    zone1LEDpin.close()
-    zone2LEDpin.off()
-    zone2LEDpin.close()
 
 def checkAnyZonesRunning():
     zonerunningcount = 0
@@ -51,14 +41,14 @@ if zone == 1:
     if state == "On":
         if not checkAnyZonesRunning():
             file = open('/tmp/zone1.txt','w')
-            file.write("Zone1")
+            file.write("Zone1On")
             file.close
             relay_on(1)
             logging.info('Turned Zone 1 on')
-            zone1LEDpin.blink(background=True)
     if state == "Off":
-        with open('/tmp/zone1.txt', 'w'):
-            pass
+            file = open('/tmp/zone1.txt','w')
+            file.write("Zone1Off")
+            file.close
         relay_off(1)
         logging.info('Turned Zone 1 off')
 
@@ -66,13 +56,13 @@ if zone == 2:
     if state == "On":
         if not checkAnyZonesRunning():
             file = open('/tmp/zone2.txt','w')
-            file.write("Zone2")
+            file.write("Zone2On")
             file.close
             relay_on(2)
             logging.info('Turned Zone 2 on')
-            zone2LEDpin.blink(background=True)
     if state == "Off":
-        with open('/tmp/zone2.txt', 'w'):
-            pass
+        file = open('/tmp/zone2.txt','w')
+        file.write("Zone2Off")
+        file.close
         relay_off(2)
         logging.info('Turned Zone 2 off')
