@@ -84,9 +84,10 @@ try:
             print("Looks like zone 1 is on")
             if not button1pressed:
                 print("And not pressed")
-                if (zone1blinkingcount > 60):
+                if (zone1blinkingcount > 10):
                     print(zone1blinkingcount)
                     zone1LEDpin.blink()
+                    zone1blinkingcount = 0
             zone1blinkingcount = zone1blinkingcount + 1
         else:
             if not button1pressed:
