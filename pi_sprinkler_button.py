@@ -82,6 +82,7 @@ try:
         time.sleep(1)
         if relay_get_port_status(1):
             print("Looks like zone 1 is on")
+            print(button1pressed)
             if not button1pressed:
                 print("And not pressed")
                 if (zone1blinkingcount > 10):
