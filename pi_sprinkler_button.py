@@ -25,10 +25,7 @@ button2pressed = False
 
 def allLEDsOff():
     zone1LEDpin.off()
-    zone1LEDpin.close()
     zone2LEDpin.off()
-    zone2LEDpin.close()
-
 
 def checkAnyZonesRunning():
     zonerunningcount = 0
@@ -85,8 +82,13 @@ try:
         time.sleep(1)
         if relay_get_port_status(1):
             if not button1pressed:
-                if zone1blinkingcount > 60
-                zone1LEDpin.blink()
+                if (zone1blinkingcount > 60):
+                    zone1LEDpin.blink()
+            zone1blinkingcount = zone1blinkingcount + 1
+        else:
+            zone1LEDpin.off()
+            zone1blinkingcount = 0
+
         if relay_get_port_status(2):
             if not button2pressed:
                 zone2LEDpin.blink()
