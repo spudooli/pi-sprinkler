@@ -13,7 +13,6 @@ from gpiozero import LED, Button
 
 import time
 
-
 installedZones = int(5)
 zone1Button = Button(24, hold_time=2)
 zone2Button = Button(18, hold_time=2)
