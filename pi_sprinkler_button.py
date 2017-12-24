@@ -80,24 +80,17 @@ zone1Button.when_held = buttonZone1
 zone2Button.when_held = buttonZone2
 
 try:
+    zone1blinkingcount = 0
+    zone2blinkingcount = 0
     while True:
         time.sleep(1)
-        with open("/tmp/zone1.txt", "r") as zoneLED1file:
-            for line in zoneLED1file:
-                if "Zone1" in line:
-                    zone1LEDpin.blink()
-                else:
-                    allLEDsOff()
-                    with open('/tmp/zone1.txt', 'w'):
-                        pass
-        with open("/tmp/zone2.txt", "r") as zoneLED2file:
-            for line in zoneLED2file:
-                if "Zone2" in line:
-                    zone2LEDpin.blink()
-                else:
-                    allLEDsOff()
-                    with open('/tmp/zone2.txt', 'w'):
-                        pass
+        if relay_get_port_status(1):
+            if not button1pressed:
+                if zone1blinkingcount > 60
+                zone1LEDpin.blink()
+        if relay_get_port_status(2):
+            if not button2pressed:
+                zone2LEDpin.blink()
 except KeyboardInterrupt:
     logging.info('Stopped Pi Sprinkler Button - Stopped')
 
