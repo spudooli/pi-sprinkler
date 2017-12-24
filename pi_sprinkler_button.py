@@ -81,13 +81,17 @@ try:
     while True:
         time.sleep(1)
         if relay_get_port_status(1):
+            print("Looks like zone 1 is on")
             if not button1pressed:
+                print("And not pressed")
                 if (zone1blinkingcount > 60):
+                    print(zone1blinkingcount)
                     zone1LEDpin.blink()
             zone1blinkingcount = zone1blinkingcount + 1
         else:
-            zone1LEDpin.off()
-            zone1blinkingcount = 0
+            if not button1pressed:
+                zone1LEDpin.off()
+                zone1blinkingcount = 0
 
         if relay_get_port_status(2):
             if not button2pressed:
