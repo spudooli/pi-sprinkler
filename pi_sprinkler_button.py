@@ -41,6 +41,7 @@ def checkAnyZonesRunning():
         return False
 
 def buttonZone1(status):
+    global button1pressed
     print("Zone 1 button pressed")
     if not checkAnyZonesRunning():
         relay_on(1)
@@ -56,6 +57,7 @@ def buttonZone1(status):
         allLEDsOff()
 
 def buttonZone2(status):
+    global button2pressed
     print("Zone 2 button pressed")
     if not checkAnyZonesRunning():
         relay_on(2)
@@ -96,8 +98,19 @@ try:
                 zone1blinkingcount = 0
 
         if relay_get_port_status(2):
+            print("Looks like zone 2 is on")
+            print(button2pressed)
             if not button2pressed:
-                zone2LEDpin.blink()
+                print("And not pressed")
+                if (zone2blinkingcount > 10):
+                    print(zone2blinkingcount)
+                    zone2LEDpin.blink()
+                    zone2blinkingcount = 0
+            zone2blinkingcount = zone2blinkingcount + 1
+        else:
+            if not button1pressed:
+                zone2LEDpin.off()
+                zone2blinkingcount = 0
 except KeyboardInterrupt:
     logging.info('Stopped Pi Sprinkler Button - Stopped')
 
