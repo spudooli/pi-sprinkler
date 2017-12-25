@@ -5,7 +5,6 @@ more than 60 minutes before shutting them off automatically
 Is a fail safe to ensure that even if the Pi loses WIFI, the water won't run all night. """
 
 import logging
-import os
 logging.basicConfig(filename='/tmp/pi-sprinkler-failsafe.log', level=logging.INFO)
 
 from relay_lib_seeed import *
