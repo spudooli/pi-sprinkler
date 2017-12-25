@@ -32,7 +32,6 @@ def checkAnyZonesRunning():
     for zonenumber in range(1, installedZones):
         if relay_get_port_status(zonenumber):
             zonerunningcount = zonerunningcount + 1
-            print(zonerunningcount)
     if zonerunningcount > 0:
         logging.info('Cannot turn zone' + str(zonenumber) + ' on there is already a zone running')
         zonerunningcount = 0
@@ -83,12 +82,8 @@ try:
     while True:
         time.sleep(1)
         if relay_get_port_status(1):
-            print("Looks like zone 1 is on")
-            print(button1pressed)
             if not button1pressed:
-                print("And not pressed")
                 if (zone1blinkingcount > 10):
-                    print(zone1blinkingcount)
                     zone1LEDpin.blink()
                     zone1blinkingcount = 0
             zone1blinkingcount = zone1blinkingcount + 1
@@ -97,12 +92,8 @@ try:
             zone1blinkingcount = 0
 
         if relay_get_port_status(2):
-            print("Looks like zone 2 is on")
-            print(button2pressed)
             if not button2pressed:
-                print("And not pressed")
                 if (zone2blinkingcount > 10):
-                    print(zone2blinkingcount)
                     zone2LEDpin.blink()
                     zone2blinkingcount = 0
             zone2blinkingcount = zone2blinkingcount + 1
