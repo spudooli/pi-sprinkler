@@ -93,9 +93,8 @@ try:
                     zone1blinkingcount = 0
             zone1blinkingcount = zone1blinkingcount + 1
         else:
-            if not button1pressed:
-                zone1LEDpin.off()
-                zone1blinkingcount = 0
+            zone1LEDpin.off()
+            zone1blinkingcount = 0
 
         if relay_get_port_status(2):
             print("Looks like zone 2 is on")
@@ -108,9 +107,8 @@ try:
                     zone2blinkingcount = 0
             zone2blinkingcount = zone2blinkingcount + 1
         else:
-            if not button1pressed:
-                zone2LEDpin.off()
-                zone2blinkingcount = 0
+            zone2LEDpin.off()
+            zone2blinkingcount = 0
 except KeyboardInterrupt:
     logging.info('Stopped Pi Sprinkler Button - Stopped')
 
