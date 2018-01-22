@@ -13,14 +13,20 @@ from gpiozero import LED, Button
 
 import time
 
+import subprocess
+
+
 installedZones = int(5)
 zone1Button = Button(24, hold_time=2)
 zone2Button = Button(18, hold_time=2)
+powerButton = Button(21, hold_time=2)
 zone1LEDpin = LED(4)
 zone2LEDpin = LED(23)
+powerLEDpin = LED(13)
 
 button1pressed = False
 button2pressed = False
+powerpressed = False
 
 
 def allLEDsOff():
@@ -71,16 +77,25 @@ def buttonZone2(status):
         button2pressed = False
         allLEDsOff()
 
+def buttonPower(status):
+    print("Power button pressed")
+    relay_all_off()
+    logging.info('Power button pressed')
+    allLEDsOff()
+    subprocess.call(['shutdown', '-h', 'now'], shell=False)
+
 logging.info('Started Pi Sprinkler Button')
 
 zone1Button.when_held = buttonZone1
 zone2Button.when_held = buttonZone2
+powerButton.when_held = buttonPower
 
 try:
     zone1blinkingcount = 0
     zone2blinkingcount = 0
     while True:
         time.sleep(1)
+        powerLEDpin.on()
         if relay_get_port_status(1):
             if not button1pressed:
                 if (zone1blinkingcount > 10):
