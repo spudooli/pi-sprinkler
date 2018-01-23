@@ -78,11 +78,11 @@ def buttonZone2(status):
         allLEDsOff()
 
 def buttonPower(status):
+    powerLEDpin.blink()
     print("Power button pressed")
     relay_all_off()
     logging.info('Power button pressed')
     allLEDsOff()
-    powerLEDpin.blink()
     check_call(['sudo', 'poweroff'])
 
 logging.info('Started Pi Sprinkler Button')
