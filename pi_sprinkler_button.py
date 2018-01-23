@@ -82,6 +82,7 @@ def buttonPower(status):
     relay_all_off()
     logging.info('Power button pressed')
     allLEDsOff()
+    powerLEDpin.blink()
     subprocess.call(['shutdown', '-h', 'now'], shell=False)
 
 logging.info('Started Pi Sprinkler Button')
