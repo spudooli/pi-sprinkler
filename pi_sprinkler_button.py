@@ -13,7 +13,7 @@ from gpiozero import LED, Button
 
 import time
 
-import subprocess
+from subprocess import check_call
 
 
 installedZones = int(5)
@@ -83,7 +83,7 @@ def buttonPower(status):
     logging.info('Power button pressed')
     allLEDsOff()
     powerLEDpin.blink()
-    subprocess.call(['sudo shutdown', '-h', 'now'], shell=False)
+    check_call(['sudo', 'poweroff'])
 
 logging.info('Started Pi Sprinkler Button')
 
